@@ -91,6 +91,12 @@ if (CRYPTO_ENGINE_MBEDTLS)
 	string(APPEND MBEDCRYPTO_C_FLAGS " ${MBEDCRYPTO_C_FLAGS_SERVICES}")
 	string(APPEND MBEDCRYPTO_C_FLAGS " -DMBEDTLS_CONFIG_FILE=\\\\\\\"${MBEDTLS_CONFIG_FILE}\\\\\\\""
 	                                 " -I${CMAKE_CURRENT_LIST_DIR}")
+	if ((DEFINED MBEDTLS_USER_CONFIG_FILE) AND (DEFINED MBEDTLS_USER_CONFIG_PATH))
+		string(APPEND MBEDCRYPTO_C_FLAGS " -DMBEDTLS_USER_CONFIG_FILE=\\\\\\\"${MBEDTLS_USER_CONFIG_FILE}\\\\\\\""
+		" -I${MBEDTLS_USER_CONFIG_PATH}")
+	endif()
+	#Add TF-M include directory so Mbed Crypto can include PSA ITS headers
+	string(APPEND MBEDCRYPTO_C_FLAGS " -I${TFM_ROOT_DIR}/interface/include")
 
 	#Build Mbed Crypto as external project.
 	#This ensures Mbed Crypto is built with exactly defined settings.
