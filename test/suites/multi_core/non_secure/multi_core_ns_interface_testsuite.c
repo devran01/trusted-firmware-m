@@ -113,7 +113,7 @@ static void multi_client_call_test(struct test_result_t *ret,
 {
     uint8_t i, nr_child;
     osThreadId_t current_thread_handle;
-    osPriority_t current_thread_priority
+    osPriority_t current_thread_priority;
     osMutexId_t mutex_handle;
     osThreadId_t child_ids[NR_MULTI_CALL_CHILD];
     struct ns_mailbox_stats_res_t stats_res;

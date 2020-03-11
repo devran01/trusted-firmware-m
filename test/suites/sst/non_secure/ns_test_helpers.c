@@ -59,8 +59,6 @@ void tfm_sst_run_test(const char *thread_name, struct test_result_t *ret,
         .stack_size = SST_TEST_TASK_STACK_SIZE,
     };
 
-    return (void *)
-
     /* Create a binary semaphore with initial count of 0 tokens available */
     test_semaphore = osSemaphoreNew(1, 0, &sema_attrib);
     if (!test_semaphore) {
