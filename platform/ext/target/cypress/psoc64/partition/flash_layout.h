@@ -68,12 +68,12 @@
 
 /* Reserved for Secure Storage Area */
 #define FLASH_SST_AREA_OFFSET           (FLASH_RESERVED_AREA_OFFSET)
-#define FLASH_SST_AREA_SIZE             (0x5000)   /* 20 KB */
+#define FLASH_SST_AREA_SIZE             (0x8000)   /* 32 KB */
 
 /* Internal Trusted Storage Area */
 #define FLASH_ITS_AREA_OFFSET           (FLASH_SST_AREA_OFFSET + \
                                          FLASH_SST_AREA_SIZE)
-#define FLASH_ITS_AREA_SIZE             (0x4000)    /* 16 KB */
+#define FLASH_ITS_AREA_SIZE             (0x1000)    /* 4 KB */
 
 #define FLASH_NV_COUNTERS_AREA_OFFSET   (FLASH_ITS_AREA_OFFSET + \
                                          FLASH_ITS_AREA_SIZE)
@@ -137,9 +137,9 @@
 /* Specifies the smallest flash programmable unit in bytes */
 #define SST_FLASH_PROGRAM_UNIT  0x1
 /* The maximum asset size to be stored in the SST area */
-#define SST_MAX_ASSET_SIZE      2048
+#define SST_MAX_ASSET_SIZE      1024
 /* The maximum number of assets to be stored in the SST area */
-#define SST_NUM_ASSETS          10
+#define SST_NUM_ASSETS          30
 
 /* Internal Trusted Storage (ITS) Service definitions
  * Note: Further documentation of these definitions can be found in the
@@ -157,7 +157,7 @@
 #define ITS_FLASH_AREA_SIZE     FLASH_ITS_AREA_SIZE
 #define ITS_SECTOR_SIZE         FLASH_AREA_IMAGE_SECTOR_SIZE
 /* Number of ITS_SECTOR_SIZE per block */
-#define ITS_SECTORS_PER_BLOCK   (0x8)
+#define ITS_SECTORS_PER_BLOCK   (0x4)
 /* Specifies the smallest flash programmable unit in bytes */
 #define ITS_FLASH_PROGRAM_UNIT  (0x1)
 /* The maximum asset size to be stored in the ITS area */
