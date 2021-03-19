@@ -28,9 +28,9 @@ target_sources(tfm_s
 )
 
 target_add_scatter_file(tfm_s
-    $<$<C_COMPILER_ID:ARMClang>:${CMAKE_SOURCE_DIR}/platform/ext/common/armclang/tfm_common_s.sct>
-    $<$<C_COMPILER_ID:GNU>:${CMAKE_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
-    $<$<C_COMPILER_ID:IAR>:${CMAKE_SOURCE_DIR}/platform/ext/common/iar/tfm_common_s.icf>
+    $<$<C_COMPILER_ID:ARMClang>:${PROJECT_SOURCE_DIR}/platform/ext/common/armclang/tfm_common_s.sct>
+    $<$<C_COMPILER_ID:GNU>:${PROJECT_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
+    $<$<C_COMPILER_ID:IAR>:${PROJECT_SOURCE_DIR}/platform/ext/common/iar/tfm_common_s.icf>
 )
 
 if(NS)
@@ -100,7 +100,7 @@ target_sources(platform_s
         Native_Driver/ppc_sse200_drv.c
         Native_Driver/uart_pl011_drv.c
         Native_Driver/timer_cmsdk_drv.c
-        ${CMAKE_SOURCE_DIR}/platform/ext/common/tfm_hal_isolation_mpu_v8m.c
+        ${PROJECT_SOURCE_DIR}/platform/ext/common/tfm_hal_isolation_mpu_v8m.c
         $<$<BOOL:${TFM_PARTITION_PLATFORM}>:${CMAKE_CURRENT_SOURCE_DIR}/plat_test.c>
         $<$<BOOL:${TFM_PARTITION_PLATFORM}>:${CMAKE_CURRENT_SOURCE_DIR}/services/src/tfm_platform_system.c>
         Libraries/mt25ql_flash_lib.c

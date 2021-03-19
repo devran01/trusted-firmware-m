@@ -24,7 +24,7 @@ endif()
 # Specify the location of platform specific build dependencies.
 
 target_add_scatter_file(tfm_s
-    $<$<C_COMPILER_ID:GNU>:${CMAKE_SOURCE_DIR}/platform/ext/target/nordic_nrf/common/core/gcc/nordic_nrf_s.ld>
+    $<$<C_COMPILER_ID:GNU>:${PROJECT_SOURCE_DIR}/platform/ext/target/nordic_nrf/common/core/gcc/nordic_nrf_s.ld>
 )
 
 if(NS)

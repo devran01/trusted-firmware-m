@@ -8,6 +8,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 set(TFM_VERSION 1.2.0)
+project("Trusted Firmware M" VERSION ${TFM_VERSION} LANGUAGES)
 
 ############################ CONFIGURATION #####################################
 
@@ -66,14 +67,14 @@ if (NOT IS_ABSOLUTE ${TFM_TOOLCHAIN_FILE})
 endif()
 
 include(${TFM_TOOLCHAIN_FILE})
-set(CMAKE_PROJECT_INCLUDE_BEFORE ${CMAKE_SOURCE_DIR}/cmake/disable_compiler_detection.cmake)
-
-project("Trusted Firmware M" VERSION ${TFM_VERSION} LANGUAGES C ASM)
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/disable_compiler_detection.cmake)
+set(CMAKE_PROJECT_INCLUDE_BEFORE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/disable_compiler_detection.cmake)
+enable_language(C ASM)
 tfm_toolchain_reload_compiler()
 
 ############################ Config Check ######################################
 
-include(${CMAKE_SOURCE_DIR}/config/check_config.cmake)
+include(${PROJECT_SOURCE_DIR}/config/check_config.cmake)
 
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/platform/ext/target/${TFM_PLATFORM}/check_config.cmake)
     include(platform/ext/target/${TFM_PLATFORM}/check_config.cmake)

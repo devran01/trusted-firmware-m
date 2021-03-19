@@ -5,7 +5,7 @@
 #
 #-------------------------------------------------------------------------------
 
-set(TFM_TOOLCHAIN_FILE                  ${CMAKE_SOURCE_DIR}/toolchain_GNUARM.cmake CACHE FILEPATH    "Path to TFM compiler toolchain file")
+set(TFM_TOOLCHAIN_FILE                  ${PROJECT_SOURCE_DIR}/toolchain_GNUARM.cmake CACHE FILEPATH    "Path to TFM compiler toolchain file")
 set(TFM_PLATFORM                        ""          CACHE STRING    "Platform to build TF-M for. Must be either a relative path from [TF-M]/platform/ext/target, or an absolute path.")
 set(CROSS_COMPILE                       arm-none-eabi CACHE STRING  "Cross-compilation triplet")
 
@@ -60,8 +60,8 @@ set(MCUBOOT_FIH_PROFILE                 OFF         CACHE STRING    "Fault injec
 # will be set to default again.
 set(MCUBOOT_SIGNATURE_TYPE              "RSA"       CACHE STRING    "Algorithm to use for signature validation")
 set(MCUBOOT_SIGNATURE_KEY_LEN           3072        CACHE STRING    "Key length to use for signature validation")
-set(MCUBOOT_KEY_S                       "${CMAKE_SOURCE_DIR}/bl2/ext/mcuboot/root-${MCUBOOT_SIGNATURE_TYPE}-${MCUBOOT_SIGNATURE_KEY_LEN}.pem" CACHE FILEPATH "Path to key with which to sign secure binary")
-set(MCUBOOT_KEY_NS                      "${CMAKE_SOURCE_DIR}/bl2/ext/mcuboot/root-${MCUBOOT_SIGNATURE_TYPE}-${MCUBOOT_SIGNATURE_KEY_LEN}_1.pem" CACHE FILEPATH "Path to key with which to sign non-secure binary")
+set(MCUBOOT_KEY_S                       "${PROJECT_SOURCE_DIR}/bl2/ext/mcuboot/root-${MCUBOOT_SIGNATURE_TYPE}-${MCUBOOT_SIGNATURE_KEY_LEN}.pem" CACHE FILEPATH "Path to key with which to sign secure binary")
+set(MCUBOOT_KEY_NS                      "${PROJECT_SOURCE_DIR}/bl2/ext/mcuboot/root-${MCUBOOT_SIGNATURE_TYPE}-${MCUBOOT_SIGNATURE_KEY_LEN}_1.pem" CACHE FILEPATH "Path to key with which to sign non-secure binary")
 
 set(MCUBOOT_IMAGE_VERSION_S             ${TFM_VERSION} CACHE STRING "Version number of S image")
 set(MCUBOOT_IMAGE_VERSION_NS            0.0.0       CACHE STRING    "Version number of NS image")
@@ -133,7 +133,7 @@ set(TFM_PARTITION_AUDIT_LOG             ON          CACHE BOOL      "Enable Audi
 
 set(FORWARD_PROT_MSG                    OFF         CACHE BOOL      "Whether to forward all PSA RoT messages to a Secure Enclave")
 set(TFM_PARTITION_FIRMWARE_UPDATE       OFF         CACHE BOOL      "Enable firmware update partition")
-set(TFM_FWU_BOOTLOADER_LIB             ${CMAKE_SOURCE_DIR}/secure_fw/partitions/firmware_update/bootloader/mcuboot/mcuboot_utilities.cmake CACHE FILEPATH    "Bootloader configure file for Firmware Update partition")
+set(TFM_FWU_BOOTLOADER_LIB             ${PROJECT_SOURCE_DIR}/secure_fw/partitions/firmware_update/bootloader/mcuboot/mcuboot_utilities.cmake CACHE FILEPATH    "Bootloader configure file for Firmware Update partition")
 
 ################################## Tests #######################################
 
@@ -161,7 +161,7 @@ set(MBEDCRYPTO_PATH                     "DOWNLOAD"  CACHE PATH      "Path to Mbe
 set(MBEDCRYPTO_VERSION                  "mbedtls-2.25.0" CACHE STRING "The version of Mbed Crypto to use")
 set(MBEDCRYPTO_GIT_REMOTE               "https://github.com/ARMmbed/mbedtls.git" CACHE STRING "The URL (or path) to retrieve MbedTLS from.")
 set(MBEDCRYPTO_BUILD_TYPE               "${CMAKE_BUILD_TYPE}" CACHE STRING "Build type of Mbed Crypto library")
-set(TFM_MBEDCRYPTO_CONFIG_PATH          "${CMAKE_SOURCE_DIR}/lib/ext/mbedcrypto/mbedcrypto_config/tfm_mbedcrypto_config_default.h" CACHE PATH "Config to use for Mbed Crypto")
+set(TFM_MBEDCRYPTO_CONFIG_PATH          "${PROJECT_SOURCE_DIR}/lib/ext/mbedcrypto/mbedcrypto_config/tfm_mbedcrypto_config_default.h" CACHE PATH "Config to use for Mbed Crypto")
 set(TFM_MBEDCRYPTO_PLATFORM_EXTRA_CONFIG_PATH "" CACHE PATH "Config to append to standard Mbed Crypto config, used by platforms to cnfigure feature support")
 
 set(TFM_TEST_REPO_PATH                  "DOWNLOAD"  CACHE PATH      "Path to TFM-TEST repo (or DOWNLOAD to fetch automatically")

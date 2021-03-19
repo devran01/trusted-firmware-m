@@ -47,7 +47,7 @@ endfunction()
 
 parse_field_from_yaml("${GENERATED_FILE_LISTS}" template TEMPLATE_FILES)
 # Replace relative paths with absolute paths
-list(TRANSFORM TEMPLATE_FILES REPLACE "^([^/\\][^:].*)" "${CMAKE_SOURCE_DIR}/\\1")
+list(TRANSFORM TEMPLATE_FILES REPLACE "^([^/\\][^:].*)" "${PROJECT_SOURCE_DIR}/\\1")
 
 parse_field_from_yaml("${GENERATED_FILE_LISTS}" output OUTPUT_FILES)
 # Replace relative paths with absolute paths
@@ -55,7 +55,7 @@ list(TRANSFORM OUTPUT_FILES REPLACE "^([^/\\][^:].*)" "${CMAKE_BINARY_DIR}/gener
 
 parse_field_from_yaml("${MANIFEST_LISTS}" manifest MANIFEST_FILES)
 # Replace relative paths with absolute paths
-list(TRANSFORM MANIFEST_FILES REPLACE "^([^/\\][^:].*)" "${CMAKE_SOURCE_DIR}/\\1")
+list(TRANSFORM MANIFEST_FILES REPLACE "^([^/\\][^:].*)" "${PROJECT_SOURCE_DIR}/\\1")
 
 ############################### Command declaration ############################
 

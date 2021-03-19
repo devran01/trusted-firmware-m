@@ -22,7 +22,7 @@ target_sources(tfm_sprt
         ./crt_memset.c
         ./service_api.c
         $<$<NOT:$<STREQUAL:${TFM_PARTITION_LOG_LEVEL},TFM_PARTITION_LOG_LEVEL_SILENCE>>:./tfm_sp_log_raw.c>
-        $<$<NOT:$<STREQUAL:${TFM_PARTITION_LOG_LEVEL},TFM_PARTITION_LOG_LEVEL_SILENCE>>:${CMAKE_SOURCE_DIR}/platform/ext/common/tfm_hal_sp_logdev_periph.c>
+        $<$<NOT:$<STREQUAL:${TFM_PARTITION_LOG_LEVEL},TFM_PARTITION_LOG_LEVEL_SILENCE>>:${PROJECT_SOURCE_DIR}/platform/ext/common/tfm_hal_sp_logdev_periph.c>
         $<$<BOOL:${TFM_SP_META_PTR_ENABLE}>:./sprt_partition_metadata_indicator.c>
 )
 

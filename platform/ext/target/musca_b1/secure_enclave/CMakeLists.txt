@@ -28,8 +28,8 @@ target_sources(tfm_s
     mailbox/mailbox_ipc_intr.c
 )
 target_add_scatter_file(tfm_s
-    $<$<C_COMPILER_ID:ARMClang>:${CMAKE_SOURCE_DIR}/platform/ext/common/armclang/tfm_common_s.sct>
-    $<$<C_COMPILER_ID:GNU>:${CMAKE_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
+    $<$<C_COMPILER_ID:ARMClang>:${PROJECT_SOURCE_DIR}/platform/ext/common/armclang/tfm_common_s.sct>
+    $<$<C_COMPILER_ID:GNU>:${PROJECT_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
 )
 
 if(BL2)

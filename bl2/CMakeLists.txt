@@ -92,8 +92,8 @@ add_subdirectory(${MBEDCRYPTO_PATH} ${CMAKE_CURRENT_BINARY_DIR}/mbedcrypto)
 set(CMAKE_BUILD_TYPE ${SAVED_BUILD_TYPE} CACHE STRING "Build type: [Debug, Release, RelWithDebInfo, MinSizeRel]" FORCE)
 
 if(NOT TARGET bl2_mbedcrypto)
-    message(FATAL_ERROR "Target bl2_mbedcrypto does not exist. Have the patches in ${CMAKE_SOURCE_DIR}/lib/ext/mbedcrypto been applied to the mbedcrypto repo at ${MBEDCRYPTO_PATH} ?
-    Hint: The command might be `cd ${MBEDCRYPTO_PATH} && git apply ${CMAKE_SOURCE_DIR}/lib/ext/mbedcrypto/*.patch`")
+    message(FATAL_ERROR "Target bl2_mbedcrypto does not exist. Have the patches in ${PROJECT_SOURCE_DIR}/lib/ext/mbedcrypto been applied to the mbedcrypto repo at ${MBEDCRYPTO_PATH} ?
+    Hint: The command might be `cd ${MBEDCRYPTO_PATH} && git apply ${PROJECT_SOURCE_DIR}/lib/ext/mbedcrypto/*.patch`")
 endif()
 
 target_link_libraries(bl2_mbedcrypto
@@ -108,8 +108,8 @@ if (TFM_CODE_SHARING)
 
     if (NOT EXISTS ${MBEDCRYPTO_PATH}/library/code_share.c)
         message(FATAL_ERROR "File ${MBEDCRYPTO_PATH}/library/code_share.c does not exist.
-        Have the patch ${CMAKE_SOURCE_DIR}/lib/ext/mbedcrypto/0005-Enable-crypto-code-sharing-between-independent-binar.patch
+        Have the patch ${PROJECT_SOURCE_DIR}/lib/ext/mbedcrypto/0005-Enable-crypto-code-sharing-between-independent-binar.patch
         been applied to the mbedcrypto repo at ${MBEDCRYPTO_PATH}?
-        Hint: The command might be `cd ${MBEDCRYPTO_PATH} && git apply ${CMAKE_SOURCE_DIR}/lib/ext/mbedcrypto/*.patch`")
+        Hint: The command might be `cd ${MBEDCRYPTO_PATH} && git apply ${PROJECT_SOURCE_DIR}/lib/ext/mbedcrypto/*.patch`")
     endif()
 endif()

@@ -24,9 +24,9 @@ target_compile_definitions(platform_region_defs
 
 #========================= Platform common defs ===============================#
 target_add_scatter_file(tfm_s
-    $<$<AND:$<VERSION_LESS:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:ARMClang>>:${CMAKE_SOURCE_DIR}/platform/ext/common/armclang/tfm_common_s.sct>
-    $<$<AND:$<VERSION_LESS:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:GNU>>:${CMAKE_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
-    $<$<AND:$<VERSION_LESS:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:IAR>>:${CMAKE_SOURCE_DIR}/platform/ext/common/iar/tfm_common_s.icf>
+    $<$<AND:$<VERSION_LESS:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:ARMClang>>:${PROJECT_SOURCE_DIR}/platform/ext/common/armclang/tfm_common_s.sct>
+    $<$<AND:$<VERSION_LESS:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:GNU>>:${PROJECT_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
+    $<$<AND:$<VERSION_LESS:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:IAR>>:${PROJECT_SOURCE_DIR}/platform/ext/common/iar/tfm_common_s.icf>
     $<$<AND:$<VERSION_EQUAL:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:ARMClang>>:${CMAKE_BINARY_DIR}/generated/platform/ext/common/armclang/tfm_isolation_l3.sct>
     $<$<AND:$<VERSION_EQUAL:${TFM_ISOLATION_LEVEL},3>,$<C_COMPILER_ID:GNU>>:${CMAKE_BINARY_DIR}/generated/platform/ext/common/gcc/tfm_isolation_l3.ld>
 )
@@ -86,7 +86,7 @@ target_sources(platform_s
         ${CMAKE_CURRENT_SOURCE_DIR}/stm32l5xx_hal/Src/stm32l5xx_hal_rcc.c
         ${CMAKE_CURRENT_SOURCE_DIR}/stm32l5xx_hal/Src/stm32l5xx_hal_rcc_ex.c
         ${CMAKE_CURRENT_SOURCE_DIR}/stm32l5xx_hal/Src/stm32l5xx_hal_gtzc.c
-        ${CMAKE_SOURCE_DIR}/platform/ext/common/tfm_hal_isolation_mpu_v8m.c
+        ${PROJECT_SOURCE_DIR}/platform/ext/common/tfm_hal_isolation_mpu_v8m.c
         $<$<BOOL:${TFM_PARTITION_PLATFORM}>:${CMAKE_CURRENT_SOURCE_DIR}/secure/tfm_platform_system>
         ${CMAKE_CURRENT_SOURCE_DIR}/stm32l5xx_hal/Src/stm32l5xx_hal_rng.c
         ${CMAKE_CURRENT_SOURCE_DIR}/stm32l5xx_hal/Src/stm32l5xx_hal_rng_ex.c
@@ -147,7 +147,7 @@ if(BL2)
             ${CMAKE_CURRENT_SOURCE_DIR}/stm32l5xx_hal/Inc
             ${MCUBOOT_PATH}/boot/bootutil/include
             $<TARGET_PROPERTY:bl2,BINARY_DIR>/ext/mcuboot
-            ${CMAKE_SOURCE_DIR}/bl2/ext/mcuboot/include
+            ${PROJECT_SOURCE_DIR}/bl2/ext/mcuboot/include
     )
 
     target_sources(platform_bl2

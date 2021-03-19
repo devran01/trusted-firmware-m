@@ -31,8 +31,8 @@ target_sources(tfm_s
         $<$<C_COMPILER_ID:IAR>:${CMAKE_CURRENT_SOURCE_DIR}/Device/Source/iar/startup_LPC55S69_cm33_core0_s.s>
 )
 target_add_scatter_file(tfm_s
-    $<$<C_COMPILER_ID:GNU>:${CMAKE_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
-    $<$<C_COMPILER_ID:IAR>:${CMAKE_SOURCE_DIR}/platform/ext/common/iar/tfm_common_s.icf>
+    $<$<C_COMPILER_ID:GNU>:${PROJECT_SOURCE_DIR}/platform/ext/common/gcc/tfm_common_s.ld>
+    $<$<C_COMPILER_ID:IAR>:${PROJECT_SOURCE_DIR}/platform/ext/common/iar/tfm_common_s.icf>
 )
 
 if(NS)
@@ -113,7 +113,7 @@ target_sources(platform_s
         ../common/Native_Driver/utilities/debug_console/fsl_debug_console.c
         ../common/Native_Driver/utilities/str/fsl_str.c
         ../common/Native_Driver/mpu_armv8m_drv.c
-        ${CMAKE_SOURCE_DIR}/platform/ext/common/tfm_hal_isolation_mpu_v8m.c
+        ${PROJECT_SOURCE_DIR}/platform/ext/common/tfm_hal_isolation_mpu_v8m.c
         $<$<BOOL:${TFM_PARTITION_PLATFORM}>:${CMAKE_CURRENT_SOURCE_DIR}/plat_test.c>
         $<$<BOOL:${TFM_PARTITION_PLATFORM}>:${CMAKE_CURRENT_SOURCE_DIR}/services/src/tfm_platform_system.c>
 )
